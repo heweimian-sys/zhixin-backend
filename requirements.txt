@@ -1,0 +1,27 @@
+# 知行·认知加速器 后端依赖
+# Python 3.10+ 兼容
+
+# Web 框架
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+
+# 数据库（SQLite，轻量无依赖）
+sqlalchemy[asyncio]==2.0.36
+aiosqlite==0.20.0
+
+# 数据验证
+pydantic==2.10.4
+pydantic-settings==2.7.0
+
+# HTTP 客户端（调用 Firecrawl 和 DeepSeek）
+httpx==0.28.1
+
+# AI 服务（DeepSeek 使用 OpenAI SDK 兼容接口）
+openai==1.59.5
+
+# 测试
+pytest==8.3.4
+pytest-asyncio==0.25.0
+
+# CORS 支持
+python-multipart==0.0.20
