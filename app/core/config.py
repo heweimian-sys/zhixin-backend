@@ -42,6 +42,10 @@ class Settings(BaseSettings):
     # 留空 = 本地开发模式，跳过认证
     ACCESS_PASSWORD: str = ""
 
+    # 管理后台密码（查看用户输入/输出记录）
+    # 留空时使用 ACCESS_PASSWORD；两者都为空则禁用管理后台
+    ADMIN_PASSWORD: str = ""
+
     # CORS（前端地址，逗号分隔多个）
     CORS_ORIGINS: str = "http://localhost:3000"
 

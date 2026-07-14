@@ -10,6 +10,7 @@ from app.models.event import Event
 from app.models.relation import Relation
 from app.models.insight import Insight
 from app.models.report import Report
+from app.models.research_log import ResearchLog
 
 __all__ = [
     "Base",
@@ -19,4 +20,5 @@ __all__ = [
     "Relation",
     "Insight",
     "Report",
+    "ResearchLog",
 ]

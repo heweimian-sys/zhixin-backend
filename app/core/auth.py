@@ -45,3 +45,34 @@ async def verify_token(authorization: str = Header(None)):
         )
 
     return True
+
+
+async def verify_admin_token(authorization: str = Header(None)):
+    """验证管理员后台 Bearer Token
+
+    管理后台会看到用户输入和完整输出，必须显式配置密码。
+    优先使用 ADMIN_PASSWORD；未设置时退回 ACCESS_PASSWORD。
+    """
+    admin_password = settings.ADMIN_PASSWORD or settings.ACCESS_PASSWORD
+    if not admin_password:
+        raise HTTPException(
+            status_code=403,
+            detail="管理后台未配置密码，请先设置 ADMIN_PASSWORD 环境变量",
+        )
+
+    if not authorization:
+        raise HTTPException(
+            status_code=401,
+            detail="缺少管理员认证信息",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+
+    expected = f"Bearer {admin_password}"
+    if authorization != expected:
+        raise HTTPException(
+            status_code=401,
+            detail="管理员密码错误",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+
+    return True
